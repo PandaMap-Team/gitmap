@@ -258,3 +258,41 @@ save-changes = Сохранить изменения
 
 ## Всплывающее меню выбора репозитория агентской панели
 select-a-repository = Выберите репозиторий
+
+## Диалог "Edit repository details"
+edit-repo-details = Настройки репозитория
+description = Описание
+short-description = Краткое описание репозитория
+website = Сайт
+enter-valid-url = Укажите корректный URL
+topics = Темы
+separate-with-spaces = (разделяйте пробелами)
+include-in-home-page = Показывать на главной странице
+releases = Релизы
+packages = Пакеты
+deployments = Развёртывания
+save-changes = Сохранить изменения
+cancel = Отмена
+
+## Боковая колонка "About"
+about = О репозитории
+resources = Ресурсы
+readme = Readme
+license = Лицензия
+mit-license = Лицензия MIT
+activity = Активность
+custom-properties = Пользовательские свойства
+stars-heading = Звёзды
+stars-label = звёзд
+watchers-heading = Наблюдатели
+watching = наблюдают
+forks-heading = Форки
+report-repository = Пожаловаться на репозиторий
+
+## Бланкслейт с ошибкой загрузки
+uh-oh = Упс!
+reload-error = При загрузке произошла ошибка. { $link ->
+      [true] { $link }
+     *[false] Пожалуйста, обновите страницу.
+}
+please-reload-page = Обновите страницу
