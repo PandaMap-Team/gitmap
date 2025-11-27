@@ -14,12 +14,12 @@
 // @match        https://github.blog/*
 // @run-at       document-end
 // @grant        none
-// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/src/core.js
-// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/src/dashboard.js
-// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/src/repo.js
-// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/src/copilot.js
-// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/src/time.js
-// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/src/footer.js
+// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/core.js
+// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/dashboard.js
+// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/repo.js
+// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/copilot.js
+// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/time.js
+// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/footer.js
 // ==/UserScript==
 
 (function () {
