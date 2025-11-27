@@ -325,3 +325,15 @@ unstar-this-repository = Удалить звезду у репозитория?
 unstar = Удалить звезду
 lists = Списки
 loading = Загрузка…
+
+## Suggested Workflows
+suggested-workflows = Рекомендуемые workflows
+based-on-tech-stack = На основе вашего стека технологий
+configure = Настроить
+
+workflow-grunt-desc = Сборка проекта NodeJS с помощью npm и Grunt.
+workflow-webpack-desc = Сборка проекта NodeJS с помощью npm и Webpack.
+workflow-deno-desc = Тестирование Deno-проекта.
+
+more-workflows = Больше workflow
+dismiss-suggestions = Скрыть предложения
