@@ -4,9 +4,9 @@
 
     const LOG_PREFIX = window.GITMAP_LOG_PREFIX || '[GitMap]';
 
-    /**
-     * Простейший парсер FTL: "ключ = значение"
-     */
+    //
+    // SimpleFTLParser — парсер "ключ = значение"
+    //
     class SimpleFTLParser {
         constructor(ftlContent) {
             this.messages = new Map();
@@ -19,7 +19,6 @@
             for (let line of lines) {
                 line = line.trim();
 
-                // пропуск комментариев и пустых строк
                 if (!line || line.startsWith('#') || line.startsWith('##')) continue;
 
                 const match = line.match(/^([a-zA-Z0-9-_]+)\s*=\s*(.+)$/);
@@ -39,14 +38,14 @@
         }
     }
 
-    /**
-     * Базовый класс локализатора
-     */
+    //
+    // Базовый класс локализатора
+    //
     class GitHubLocalizer {
         constructor(ftlContent) {
             this.parser = new SimpleFTLParser(ftlContent);
             this.observer = null;
-            this.protectedElements = new Map(); // элементы под защитой
+            this.protectedElements = new Map();
             console.info(`${LOG_PREFIX} Localizer initialized with ${this.parser.messages.size} messages.`);
         }
 
@@ -55,9 +54,9 @@
             return message != null ? message : fallback;
         }
 
-        /**
-         * Локализация элемента по тексту
-         */
+        //
+        // Базовая локализация по тексту
+        //
         localizeByText(element, originalText, messageKey) {
             if (!element || !element.textContent) return false;
 
@@ -65,13 +64,11 @@
             const translation = this.getTranslation(messageKey);
             if (!translation) return false;
 
-            // уже переведено
             if (currentText === translation) {
                 this.protectElement(element, translation);
                 return false;
             }
 
-            // текст отличается от ожидаемого оригинала
             if (currentText !== originalText) return false;
 
             element.textContent = translation;
@@ -80,9 +77,9 @@
             return true;
         }
 
-        /**
-         * Защита элемента от отката перевода
-         */
+        //
+        // Защита элемента от отката перевода
+        //
         protectElement(element, translatedText) {
             if (this.protectedElements.has(element)) return;
 
@@ -109,7 +106,9 @@
             });
         }
 
-        // ----- общие утилиты, которые используют разные модули -----
+        //
+        // ---- Общие утилиты (используются в разных модулях) ----
+        //
 
         normalizeSearchPlaceholderText(translation) {
             if (typeof translation !== 'string') return null;
@@ -240,12 +239,14 @@
             return true;
         }
 
-        // ===== Время: базовые утилиты (detail-логика вынесем в time.js) =====
-
+        //
+        // Время: перевод title относительного времени
+        //
         translateAbsoluteTime(text) {
-            if (typeof text !== 'string' || !text.trim()) return text;
+            if (typeof text !== 'string' || !text.trim()) {
+                return text;
+            }
 
-            // формат: «Nov 5, 2025, 11:25 PM GMT+3»
             const regex = /^([A-Z][a-z]{2,8})\s+(\d{1,2}),\s+(\d{4}),\s+(\d{1,2}):(\d{2})\s+(AM|PM)\s+GMT([+-]\d+)$/;
             const match = text.match(regex);
 
@@ -299,9 +300,9 @@
             }
         }
 
-        /**
-         * Вызвать все локализаторы (которые навесили модули)
-         */
+        //
+        // Вызывает все локализаторы, которые навешаны модулями
+        //
         localize() {
             this.localizeDashboard?.();
             this.localizeSearchPlaceholder?.();
@@ -359,7 +360,6 @@
         }
     }
 
-    // экспорт в глобал, чтобы видели другие @require-файлы и основной скрипт
     window.SimpleFTLParser = SimpleFTLParser;
     window.GitHubLocalizer = GitHubLocalizer;
 })();
