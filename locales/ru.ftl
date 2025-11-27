@@ -296,3 +296,32 @@ reload-error = При загрузке произошла ошибка. { $link 
      *[false] Пожалуйста, обновите страницу.
 }
 please-reload-page = Обновите страницу
+
+## Боковая колонка: Releases / Packages / Languages
+no-releases-published = Релизы ещё не опубликованы
+create-new-release = Создать новый релиз
+no-packages-published = Пакеты ещё не опубликованы
+publish-your-first-package = Опубликовать первый пакет
+languages = Языки
+
+## Хедер репозитория и закрепления
+public-repository = Публичный
+edit-pins = Управлять закреплением
+pin-to = Закрепить в…
+public-pins-org = Публичные закрепы в этой организации
+visible-to-anyone = Видны всем
+private-pins-org = Приватные закрепы в этой организации
+visible-to-members-only = Видны только участникам
+pin-to-personal-profile = Закрепить в личном профиле, будет видно всем
+apply = Применить
+
+## Watch / Fork / Star / Lists
+watch = Следить
+fork = Форк
+forks-could-not-be-loaded = Не удалось загрузить форки
+star = Добавить звезду
+starred = Со звёздой
+unstar-this-repository = Удалить звезду у репозитория?
+unstar = Удалить звезду
+lists = Списки
+loading = Загрузка…
