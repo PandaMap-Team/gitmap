@@ -9,6 +9,9 @@
         return;
     }
 
+    //
+    // Dashboard / хлебные крошки
+    //
     GitHubLocalizer.prototype.localizeDashboard = function () {
         const dashboardElements = document.querySelectorAll('.AppHeader-context-item-label');
         dashboardElements.forEach(el => {
@@ -16,6 +19,9 @@
         });
     };
 
+    //
+    // Поисковая строка «Type / to search»
+    //
     GitHubLocalizer.prototype.localizeSearchPlaceholder = function () {
         const searchInput = document.querySelector('#qb-input-query');
         if (!searchInput) return;
@@ -74,14 +80,15 @@
         });
     };
 
+    //
+    // Тултипы в шапке
+    //
     GitHubLocalizer.prototype.localizeTooltips = function () {
-        // «Command palette»
         const commandPaletteTooltips = document.querySelectorAll('tool-tip[for="AppHeader-commandPalette-button"]');
         commandPaletteTooltips.forEach(tooltip => {
             this.localizeByText(tooltip, 'Command palette', 'command-palette');
         });
 
-        // «Chat with Copilot»
         const copilotTooltips = document.querySelectorAll('tool-tip[for="copilot-chat-header-button"]');
         copilotTooltips.forEach(tooltip => {
             this.localizeByText(tooltip, 'Chat with Copilot', 'chat-with-copilot');
@@ -122,6 +129,9 @@
         });
     };
 
+    //
+    // Приветствие "Good morning, username!"
+    //
     GitHubLocalizer.prototype.localizeGreeting = function () {
         const greetingElements = document.querySelectorAll('.h2.prc-Heading-Heading-6CmGO');
 
@@ -157,6 +167,9 @@
         });
     };
 
+    //
+    // GitHub Education блок
+    //
     GitHubLocalizer.prototype.localizeGitHubEducation = function () {
         const taglines = document.querySelectorAll('.h4');
         taglines.forEach(el => {
@@ -186,6 +199,95 @@
         });
     };
 
+    //
+    // ActionListItem-метки (левые меню, дропдауны и т.п.)
+    //
+    GitHubLocalizer.prototype.localizeActionListItems = function () {
+        const translationMap = new Map([
+            ['Home', 'home'],
+            ['Feed', 'feed'],
+            ['Code', 'code'],
+            ['Settings', 'settings'],
+            ['Issues', 'issues'],
+            ['Pull requests', 'pull-requests'],
+            ['Actions', 'actions'],
+            ['Projects', 'projects'],
+            ['Security', 'security'],
+            ['Insights', 'insights'],
+            ['Discussions', 'discussions'],
+            ['Codespaces', 'codespaces'],
+            ['Copilot', 'copilot'],
+            ['Explore', 'explore'],
+            ['Marketplace', 'marketplace'],
+            ['MCP registry', 'mcp-registry'],
+            ['New issue', 'new-issue'],
+            ['New repository', 'new-repository'],
+            ['Import repository', 'import-repository'],
+            ['New agent task', 'new-agent-task'],
+            ['New codespace', 'new-codespace'],
+            ['New gist', 'new-gist'],
+            ['New organization', 'new-organization'],
+            ['New project', 'new-project'],
+            ['Profile', 'profile'],
+            ['Repositories', 'repositories'],
+            ['Stars', 'stars'],
+            ['Gists', 'gists'],
+            ['Organizations', 'organizations'],
+            ['Enterprises', 'enterprises'],
+            ['Sponsors', 'sponsors'],
+            ['Settings', 'settings'],
+            ['Copilot settings', 'copilot-settings'],
+            ['Feature preview', 'feature-preview'],
+            ['Appearance', 'appearance'],
+            ['Accessibility', 'accessibility'],
+            ['Try Enterprise', 'try-enterprise'],
+            ['Sign out', 'sign-out'],
+            ['Open', 'open'],
+            ['Closed', 'closed'],
+            ['Authored', 'authored'],
+            ['Mentioned', 'mentioned'],
+            ['Review requested', 'review-requested'],
+            ['Reviewed', 'reviewed'],
+            ['Assigned to me', 'assigned-to-me'],
+            ['Involves me', 'involves-me'],
+            ['Repositories…', 'copilot-repositories'],
+            ['Files and folders…', 'files-and-folders'],
+            ['Spaces…', 'spaces'],
+            ['Upload from computer', 'upload-from-computer'],
+            ['Extensions…', 'extensions']
+        ]);
+
+        const selectors = ['.ActionListItem-label', '.prc-ActionList-ItemLabel-TmBhn'];
+        const items = document.querySelectorAll(selectors.join(', '));
+        items.forEach(item => {
+            const text = item.textContent.trim();
+            if (!translationMap.has(text)) return;
+
+            const key = translationMap.get(text);
+            this.localizeByText(item, text, key);
+        });
+
+        const headingTranslationMap = new Map([
+            ['Agent sessions to include', 'agent-sessions-to-include'],
+            ['Number of results', 'number-of-results'],
+            ['Pull requests to include', 'pull-requests-to-include'],
+            ['Issues to include', 'issues-to-include']
+        ]);
+
+        const headingSelectors = ['.prc-ActionList-GroupHeading-eahp0'];
+        const headings = document.querySelectorAll(headingSelectors.join(', '));
+        headings.forEach(heading => {
+            const text = heading.textContent.trim();
+            if (!headingTranslationMap.has(text)) return;
+
+            const key = headingTranslationMap.get(text);
+            this.localizeByText(heading, text, key);
+        });
+    };
+
+    //
+    // Дашборд: заголовки, "View all", "Show more", "View changelog"
+    //
     GitHubLocalizer.prototype.localizeDashboardElements = function () {
         const changelogTitles = document.querySelectorAll('.dashboard-changelog__title');
         changelogTitles.forEach(title => {
@@ -220,6 +322,9 @@
         });
     };
 
+    //
+    // Подсказки дашборда (tooltips)
+    //
     GitHubLocalizer.prototype.localizeDashboardTooltips = function () {
         const tooltipTranslations = [
             { text: 'Agent sessions options', key: 'agent-sessions-options' },
@@ -270,6 +375,9 @@
         });
     };
 
+    //
+    // Элементы поиска: "Search syntax tips", "Give feedback"
+    //
     GitHubLocalizer.prototype.localizeSearchElements = function () {
         const syntaxLinks = document.querySelectorAll('a.Link.color-fg-accent.text-normal[href*="understanding-github-code-search-syntax"]');
         syntaxLinks.forEach(link => {
