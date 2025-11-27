@@ -161,8 +161,128 @@
             this.localizeByText(span, 'Readme', 'readme');
         }
 
-        // ... (остальной код из твоего метода localizeRepoSidebarAbout
-        // можно дословно перенести сюда по той же схеме)
-    };
+        // "License"
+        const licenseH3 = [...container.querySelectorAll('h3.sr-only')].find(
+             h3 => h3.textContent.trim() === 'License'
+        );
+        if (licenseH3) {
+            this.localizeByText(licenseH3, 'License', 'license');
+        }
 
+        // "MIT license"
+        const licenseLink = container.querySelector('a[href$="#MIT-1-ov-file"]');
+        if (licenseLink) {
+            this.localizeByText(licenseLink, 'MIT license', 'mit-license');
+        }
+
+        // "Activity"
+        const activityLink = container.querySelector('a[href$="/activity"] span.color-fg-muted');
+        if (activityLink) {
+            this.localizeByText(activityLink, 'Activity', 'activity');
+        }
+
+        // "Custom properties"
+        const customPropsLink = container.querySelector('a[href$="/custom-properties"] span.color-fg-muted');
+        if (customPropsLink) {
+            this.localizeByText(customPropsLink, 'Custom properties', 'custom-properties');
+        }
+
+        // "Stars" (h3 sr-only)
+        const starsH3 = [...container.querySelectorAll('h3.sr-only')].find(
+            h3 => h3.textContent.trim() === 'Stars'
+        );
+        if (starsH3) {
+            this.localizeByText(starsH3, 'Stars', 'stars-heading');
+        }
+
+        // "0 stars"
+        const starsLink = container.querySelector('a[href$="/stargazers"]');
+        if (starsLink) {
+            const textNode = [...starsLink.childNodes].find(
+                n => n.nodeType === Node.TEXT_NODE && n.textContent.includes('stars')
+            );
+            if (textNode) {
+                const t = this.getTranslation('stars-label') || 'звёзд';
+                textNode.textContent = ' ' + t;
+            }
+        }
+
+        // "Watchers" / "watching"
+        const watchersH3 = [...container.querySelectorAll('h3.sr-only')].find(
+            h3 => h3.textContent.trim() === 'Watchers'
+        );
+        if (watchersH3) {
+            this.localizeByText(watchersH3, 'Watchers', 'watchers-heading');
+        }
+
+        const watchersLink = container.querySelector('a[href$="/watchers"]');
+        if (watchersLink) {
+            const textNode = [...watchersLink.childNodes].find(
+                n => n.nodeType === Node.TEXT_NODE && n.textContent.includes('watching')
+            );
+            if (textNode) {
+                const t = this.getTranslation('watching') || 'наблюдают';
+                textNode.textContent = ' ' + t;
+            }
+        }
+
+        // "Forks"
+        const forksH3 = [...container.querySelectorAll('h3.sr-only')].find(
+            h3 => h3.textContent.trim() === 'Forks'
+        );
+        if (forksH3) {
+            this.localizeByText(forksH3, 'Forks', 'forks-heading');
+        }
+
+        const forksLink = container.querySelector('a[href$="/forks"]');
+        if (forksLink) {
+            const textNode = [...forksLink.childNodes].find(
+                n => n.nodeType === Node.TEXT_NODE && n.textContent.includes('forks')
+            );
+            if (textNode) {
+                const t = this.getTranslation('forks-heading') || 'Форки';
+                textNode.textContent = ' ' + t.toLowerCase(); // "форки"
+            }
+        }
+
+        // "Report repository"
+        const reportLink = container.querySelector('a[href*="/contact/report-content"]');
+        if (reportLink) {
+            this.localizeByText(reportLink, 'Report repository', 'report-repository');
+        }
+
+        // "Uh oh!" и текст ошибки в blankslate
+        const errorHeading = container.querySelector('.blankslate-heading');
+        if (errorHeading) {
+            this.localizeByText(errorHeading, 'Uh oh!', 'uh-oh');
+        }
+
+        const errorParagraph = container.querySelector(
+            '.blankslate p.color-fg-muted.my-2.mb-2.ws-normal'
+        );
+        if (errorParagraph) {
+            const link = errorParagraph.querySelector('a');
+            const text = errorParagraph.textContent.trim();
+
+            const translationText = this.getTranslation('reload-error');
+            const linkText = this.getTranslation('please-reload-page');
+
+            if (translationText && link && linkText) {
+                // Просто заменяем всё предложение на локальное
+                link.textContent = linkText;
+                errorParagraph.textContent = '';
+                errorParagraph.append(
+                    document.createTextNode(translationText + ' '),
+                    link,
+                    document.createTextNode('.')
+                );
+            } else {
+                this.localizeByText(
+                    errorParagraph,
+                    'There was an error while loading. Please reload this page.',
+                    'reload-error'
+                );
+            }
+        }
+    };
 })();
