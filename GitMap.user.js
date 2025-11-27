@@ -18,21 +18,28 @@
 (function () {
     'use strict';
 
-    // эти константы нужны и в модулях → вынесем в глобал
+    // глобальные константы, чтобы модули могли их использовать
     window.GITMAP_FTL_URL = 'https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/locales/ru.ftl';
     window.GITMAP_LOG_PREFIX = '[GitMap]';
 
+    const LOG_PREFIX = window.GITMAP_LOG_PREFIX;
+
     async function loadFTL(url) {
-        console.info(`${window.GITMAP_LOG_PREFIX} Fetching FTL file from ${url}`);
-        const resp = await fetch(url);
-        if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-        const text = await resp.text();
-        console.info(`${window.GITMAP_LOG_PREFIX} FTL file downloaded successfully.`);
-        return text;
+        console.info(`${LOG_PREFIX} Fetching FTL file from ${url}`);
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const content = await response.text();
+        console.info(`${LOG_PREFIX} FTL file downloaded successfully.`);
+        return content;
     }
 
     async function init() {
-        console.info(`${window.GITMAP_LOG_PREFIX} DOM ready, initializing localizer...`);
+        console.info(`${LOG_PREFIX} DOM ready, initializing localizer...`);
+
         try {
             const ftlContent = await loadFTL(window.GITMAP_FTL_URL);
 
@@ -43,12 +50,12 @@
             localizer.observeChanges();
 
             window.GitMapLocalizer = localizer;
-        } catch (e) {
-            console.error(`${window.GITMAP_LOG_PREFIX} Failed to initialize localizer:`, e);
+        } catch (error) {
+            console.error(`${LOG_PREFIX} Failed to initialize localizer:`, error);
         }
     }
 
-    console.info(`${window.GITMAP_LOG_PREFIX} Userscript loaded.`);
+    console.info(`${LOG_PREFIX} Userscript loaded.`);
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
