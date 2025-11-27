@@ -20,6 +20,7 @@
 // @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/copilot.js
 // @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/time.js
 // @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/footer.js
+// @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/refs/heads/main/scr/repo_header.js
 // ==/UserScript==
 
 (function () {
