@@ -1,10 +1,17 @@
 // ==UserScript==
 // @name         GitMap — русификация GitHub
 // @namespace    gitmap
+// @author       Deflecat (original), m09l6d0ur13ii (maintainer)
 // @version      0.1.0
-// @description  Локализация GitHub на русский язык
+// @license      MIT
+// @icon         https://github.githubassets.com/favicons/favicon.png
+// @description  Русская локализация интерфейса GitHub (на основе оригинального скрипта GitHub Russian Localization)
+// @homepageURL  https://github.com/PandaMap-Team/gitmap
+// @supportURL   https://github.com/PandaMap-Team/gitmap/issues
 // @match        https://github.com/*
 // @match        https://*.github.com/*
+// @match        https://education.github.com/*
+// @match        https://github.blog/*
 // @run-at       document-end
 // @grant        none
 // @require      https://raw.githubusercontent.com/PandaMap-Team/gitmap/main/src/core.js
